@@ -27,8 +27,32 @@ AWS Lambda and Amazon DynamoDB are used to build a backend process for handling 
 
 ![image](https://user-images.githubusercontent.com/17631776/120606053-5755d400-c481-11eb-893a-f59be522d44d.png)
 
+## Services Introduction
+### Understanding DynamoDB:
+DynamoDB is a distributed NoSQL, schemaless, key-value storage system. Extremely scalable as the amount of data stored mainly depends on the physical memory of the system. In DynamoDB, you don’t have any such limits as you can scale the system horizontally. You will pay only for the resources you provision.
+Though it is schemaless it is still represented as a table. Each table is a collection of items. Value(Attributes) of each item can be a scalar, JSON, set etc. Item size should be less than 400KB (binary, UTF-8). Each item in the table is uniquely identified with a Primary key and is mandatory while creating the table. Primary key can be the same as Partition key or a combination of Partition key and Sort key. If it is a combination of both it is also called Composite primary key.
 
+### Understanding Lambda
+Lambda is a serverless compute service. It lets you run code without provisioning or managing servers. You pay only for the compute time you consume. It supports NodeJS, Python, Java, GO etc. Lambda can be triggered from a variety of AWS services. Learn more about Lambda here.
+To Every Lambda function handler, 3 objects can passed as argument.
+The first argument is the event object, which contains information from the invoker. The invoker passes this information as a JSON-formatted string when it invokes Lambda. When an AWS service invokes your function, the event object structure varies by service.
+The second argument is the context object, which contains information about the invocation, function, and execution environment. In the preceding example, the function gets the name of the log stream from the context object and returns it to the invoker.
+The third argument, callback, is a function that you can call in non-async functions to send a response to invoker. The callback function takes two arguments: an Error and a response. The response object must be compatible with JSON.stringify. Error should be null for successful response.
+In our app, Lambda is used as a mediator for incoming HTTP requests & DynamoDB. Lambda writes, reads and processes data to/from DynamoDB accordingly.
 
+### Understanding API Gateway
+Amazon API Gateway is a fully managed service that makes it easy for developers to create, publish, maintain, monitor, and secure API s at any scale.
+With a few clicks in the AWS Management Console, you can create REST and WebSocket APIs that act as a front door for applications to access data, business logic, or functionality from your backend services, such as workloads running on EC2, code running on Lambda, any web application, or real-time communication applications.
+API Gateway handles all the tasks involved in accepting and processing up to hundreds of thousands of concurrent API calls, including traffic management, authorization and access control, monitoring, and API version management.
+In our app, we use API Gateway to invoke different Lambda functions for different API calls.
+Understanding Cognito:
+Amazon Cognito User Pool makes it easy for developers to add sign-up and sign-in functionality to web and mobile applications. It serves as your own identity provider to maintain a user directory. It supports user registration and sign-in, as well as provisioning identity tokens for signed-in users.
+Our Jotter app needs to handle user accounts and authentication in a secure and reliable way. We are going to use Cognito User Pool for it.
+
+### Understanding Amplify
+AWS Amplify is a framework provided by AWS to develop applications, with AWS cloud services. Amplify makes the process of stitching cloud services with our application hassle free. Amplify provides different libraries for different apps(iOS, Android, Web, React Native). Amplify javascript library is available as an npm package(aws-amplify). The aws-amplify client library uses a config file to connect AWS services. The services which amplify provides include Database, API, Lambda/serverless, Authentication, Hosting, Storage, Analytics.
+Note: One could also use AWS Amplify CLI to provision AWS services. The aws-amplify client library and Amplify CLI are two different things.
+Amplify CLI internally uses cloudformation to provision/create, while aws-amplify client library is used to connect to AWS services. Using Amplify CLI is inconvenient as you are not creating services directly from AWS console but by using a CloudFormation stack internally. If successful, it returns a config file with all the metadata of different services provisioned. Instead a simple approach is to create required services from AWS console and update the config file manually and use it with aws-amplify client library.
 
 
 
