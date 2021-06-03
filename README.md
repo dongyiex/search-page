@@ -2,7 +2,8 @@
 
 Click [here](https://master.d2b0dfythxo1sz.amplifyapp.com/) to access the web app.
 
-![image](https://user-images.githubusercontent.com/17631776/120613346-bd922500-c488-11eb-941f-d02e3027e49a.png)
+![CleanShot 2021-06-03 at 16 27 23](https://user-images.githubusercontent.com/17631776/120613600-f7632b80-c488-11eb-9099-2946c0f3cc0b.gif)
+
 
 
 ## Application Architecture
