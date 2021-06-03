@@ -28,7 +28,7 @@ AWS Lambda and Amazon DynamoDB are used to build a backend process for handling 
 ![image](https://user-images.githubusercontent.com/17631776/120606053-5755d400-c481-11eb-893a-f59be522d44d.png)
 
 ## Services Introduction
-### Understanding DynamoDB:
+### Understanding DynamoDB
 DynamoDB is a distributed NoSQL, schemaless, key-value storage system. Extremely scalable as the amount of data stored mainly depends on the physical memory of the system. In DynamoDB, you don’t have any such limits as you can scale the system horizontally. You will pay only for the resources you provision.
 Though it is schemaless it is still represented as a table. Each table is a collection of items. Value(Attributes) of each item can be a scalar, JSON, set etc. Item size should be less than 400KB (binary, UTF-8). Each item in the table is uniquely identified with a Primary key and is mandatory while creating the table. Primary key can be the same as Partition key or a combination of Partition key and Sort key. If it is a combination of both it is also called Composite primary key.
 
@@ -44,10 +44,6 @@ In our app, Lambda is used as a mediator for incoming HTTP requests & DynamoDB. 
 Amazon API Gateway is a fully managed service that makes it easy for developers to create, publish, maintain, monitor, and secure API s at any scale.
 With a few clicks in the AWS Management Console, you can create REST and WebSocket APIs that act as a front door for applications to access data, business logic, or functionality from your backend services, such as workloads running on EC2, code running on Lambda, any web application, or real-time communication applications.
 API Gateway handles all the tasks involved in accepting and processing up to hundreds of thousands of concurrent API calls, including traffic management, authorization and access control, monitoring, and API version management.
-In our app, we use API Gateway to invoke different Lambda functions for different API calls.
-Understanding Cognito:
-Amazon Cognito User Pool makes it easy for developers to add sign-up and sign-in functionality to web and mobile applications. It serves as your own identity provider to maintain a user directory. It supports user registration and sign-in, as well as provisioning identity tokens for signed-in users.
-Our Jotter app needs to handle user accounts and authentication in a secure and reliable way. We are going to use Cognito User Pool for it.
 
 ### Understanding Amplify
 AWS Amplify is a framework provided by AWS to develop applications, with AWS cloud services. Amplify makes the process of stitching cloud services with our application hassle free. Amplify provides different libraries for different apps(iOS, Android, Web, React Native). Amplify javascript library is available as an npm package(aws-amplify). The aws-amplify client library uses a config file to connect AWS services. The services which amplify provides include Database, API, Lambda/serverless, Authentication, Hosting, Storage, Analytics.
